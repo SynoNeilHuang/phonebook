@@ -21,9 +21,15 @@ typedef struct __DETAILED_INFO {
 
 typedef struct __PHONE_BOOK_ENTRY {
     char lastName[MAX_LAST_NAME_SIZE];
+    unsigned int hash;
     struct DetailInfo *pinfo;
     struct __PHONE_BOOK_ENTRY *pNext;
 } entry;
+
+typedef struct __HASH_ENTRY {
+	entry *pHead;
+	entry *pTail;
+} HashEntry;
 
 entry *findName(char lastname[], entry *pHead);
 entry *append(char lastName[], entry *e);
