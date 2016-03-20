@@ -68,6 +68,8 @@ void* thread_do (void *args) {
 		pthread_mutex_unlock(&WaitMainThread_mutex);
 
 		for(int i = 0 ; i < STRING_COUNT ; ++i) {
+			if (Data[i][0] == '\0')
+				break;
 			pthread_mutex_lock(&WaitAppend_mutex);
 			append(Data[i], e);
 			pthread_mutex_unlock(&WaitAppend_mutex);
