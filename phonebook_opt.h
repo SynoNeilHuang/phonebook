@@ -31,6 +31,14 @@ typedef struct __HASH_ENTRY {
 	entry *pTail;
 } HashEntry;
 
+static inline unsigned int djb2_hash (unsigned char *str) {
+	unsigned int hash = 5381;
+	int c;
+	while ( (c = *str++) )
+		hash = ((hash << 5 ) + hash ) + c; /* hash * 33 + c */
+	return hash;
+}
+
 entry *findName(char lastname[], entry *pHead);
 entry *append(char lastName[], entry *e);
 
